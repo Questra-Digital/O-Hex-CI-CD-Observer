@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  landing:
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+      target: development
+    networks:
+      - ship
+    environment:
+      APP_ENV: development
+    volumes:
+      - "./:/app"
+      - "/app/node_modules"
+    ports:
+      - "3000:3000"
+
+networks:
+  ship:
+    name: ship_network
