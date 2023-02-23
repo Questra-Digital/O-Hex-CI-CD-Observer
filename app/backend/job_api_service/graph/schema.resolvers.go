@@ -7,8 +7,11 @@ package graph
 import (
 	"context"
 	"fmt"
+	"gitlab/jobs/database"
 	"gitlab/jobs/graph/model"
 )
+
+var db = database.Connect()
 
 // CreateJob is the resolver for the CreateJob field.
 func (r *mutationResolver) CreateJob(ctx context.Context, input model.CreateJobInput) (*model.Jobs, error) {
@@ -22,7 +25,7 @@ func (r *queryResolver) JobsList(ctx context.Context) ([]*model.Jobs, error) {
 
 // Job is the resolver for the job field.
 func (r *queryResolver) Job(ctx context.Context, id string) (*model.Jobs, error) {
-	panic(fmt.Errorf("not implemented: Job - job"))
+	db.job(id)
 }
 
 // Mutation returns MutationResolver implementation.
