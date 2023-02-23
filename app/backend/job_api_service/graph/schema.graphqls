@@ -1,0 +1,33 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type User{
+  userID:String
+  createdAt: String
+}
+type Jobs {
+  id: ID!
+  JobID: String! 
+  title: String
+  status: String!
+  duration: String!
+  queued_duration: String!
+  user: User!
+}
+type Query{
+  jobsList: [Jobs!]!
+  job(id:ID!): Jobs
+}
+type Mutation{
+  CreateJob(input: CreateJobInput!): Jobs!
+}
+input CreateJobInput{
+  JobID: String!
+  status: String!
+  duration: String!
+  queued_duration: String!
+  title: String
+  userID: String
+  createdAt: String 
+}
