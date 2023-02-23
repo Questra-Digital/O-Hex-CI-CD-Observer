@@ -1,0 +1,1 @@
+Redis test file for db cache
